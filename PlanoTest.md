@@ -6,7 +6,10 @@
 ## 1. Objetivo
 Garantir a eficácia do mecanismo de autenticação, validando que o acesso ao sistema seja concedido exclusivamente mediante a inserção de credenciais válidas. Adicionalmente, verificar se o sistema lida de forma adequada com dados de entrada inválidos ou incorretos, exibindo as devidas mensagens de erro e impedindo acessos indevidos.
 
-## 2. Versao
+## 2. Historico de revisoes
+| Versao | Data | Descricao | Autor(a) |
+| :--- | :--- | :--- | :--- |
+| 1.0 | 21/09/2026 | Criacao do plano de teste | Jessica Vieira |
 
 ## 3. Escopo
 ### 3.1 No escopo
@@ -58,6 +61,27 @@ A abordagem de validação será baseada exclusivamente em **testes manuais de c
    * **Particionamento de Equivalência:** Divisão das entradas de dados em classes válidas (sucesso), inválidas (credenciais incorretas) e de estado (utilizador bloqueado), evitando testes redundantes.
    * **Tabela de Decisão:** Mapeamento de todas as combinações possíveis de *Inputs* (campo utilizador e campo senha) e os seus respetivos *Outputs* (redirecionamento ou mensagens de erro específicas).
 
-## Criterios
-## Ambiente de testes
-## Entregaveis de testes
+## 7. Criterios
+### 7.1 Criterios de entrada
+* Casos de testes definidos e revisados 
+* Ambiente de teste pronto
+### 7.2 Criterios de saida
+* Todos os casos de testes executados
+* Todos os defeitos encontrados documentados
+* Evidências registradas para todos os casos que falharam
+
+## 8. Ambiente de testes
+| Componente | Detalhes |
+|------------|----------|
+| **URL da aplicação** | https://www.saucedemo.com |
+| **Navegador** | Mozilla Firefox 156.0 (64 bits) para Arch Linux |
+| **Sistema operacional** | Arch Linux |
+| **Rede** | Wi-Fi residencial |
+| **Dispositivo** | Desktop |
+| **Ferramentas de teste** | GitHub, Markdown |
+
+## 9. Entregaveis
+* Plano de teste
+* Casos de testes
+* Reporte de Bugs
+* Evidencias de testes
