@@ -1,149 +1,149 @@
-# Plano de Teste - Funcionalidade de Login
-**Projeto:** SauceDemo Teste de Login \
-**Responsável:** Jessica Vieira \
-**Data:** 21/09/2026
+# Test Plan - Login Feature
+**Project:** SauceDemo Login Testing \
+**Author:** Jessica Vieira \
+**Date:** September 21, 2026
 
-## 1. Objetivo
-Garantir a eficácia do mecanismo de autenticação, validando que o acesso ao sistema seja concedido exclusivamente mediante a inserção de credenciais válidas. Adicionalmente, verificar se o sistema lida de forma adequada com dados de entrada inválidos ou incorretos, exibindo as devidas mensagens de erro e impedindo acessos indevidos.
+## 1. Objective
+Ensure the effectiveness of the authentication mechanism by validating that system access is granted exclusively upon entering valid credentials. Additionally, verify that the system properly handles invalid or incorrect input data, displaying the appropriate error messages and preventing unauthorized access.
 
-## 2. Histórico de revisões
-| Versão | Data | Descrição | Autor(a) |
+## 2. Revision History
+| Version | Date | Description | Author |
 | :--- | :--- | :--- | :--- |
-| 1.0 | 21/09/2026 | Criação do plano de teste | Jessica Vieira |
-| 1.1 | 21/09/2026 | Adicionados Tabela de Decisão, Estimativas, Itens de teste, Critérios de suspensão e retomada, Dados de teste, Referências e Glossário | Jessica Vieira |
-| 1.2 | 22/09/2026 | Adicionada seção de Premissas, com a remoção de itens do Fora de escopo que na verdade eram funcionalidades inexistentes no SauceDemo | Jessica Vieira |
+| 1.0 | 09/21/2026 | Test plan creation | Jessica Vieira |
+| 1.1 | 09/21/2026 | Added Decision Table, Estimates, Test Items, Suspension/Resumption Criteria, Test Data, References, and Glossary | Jessica Vieira |
+| 1.2 | 09/22/2026 | Added Assumptions section and removed items from Out of Scope that were non-existent features in SauceDemo | Jessica Vieira |
 
-## 3. Escopo
-### 3.1 No escopo
-* Login com credenciais válidas
-* Login com usuário bloqueado
-* Login com usuário e/ou senha inválidos
-* Login com campos de usuário e/ou senha vazios
-* Validação das mensagens de erro na tela de login
-* Redirecionamento para a página de produtos (/inventory.html) após login válido
-* Máscara de senha
+## 3. Scope
+### 3.1 In Scope
+* Login with valid credentials
+* Login with locked-out user
+* Login with invalid username and/or password
+* Login with empty username and/or password fields
+* Error message validation on the login screen
+* Redirection to the products page (/inventory.html) after a valid login
+* Password masking
 
-### 3.2 Fora de escopo
-* Teste de segurança (SQL Injection, XSS, etc.)
-* Teste de performance e carga
-* Teste em outro navegador ou sistema operacional
-* Validação de comportamentos anômalos pós-login associados aos perfis especiais do Sauce Demo (problem_user, performance_glitch_user, error_user e visual_user), uma vez que o processo de autenticação para estes usuários segue o fluxo padrão.
+### 3.2 Out of Scope
+* Security testing (SQL Injection, XSS, etc.)
+* Performance and load testing
+* Cross-browser and cross-OS testing
+* Validation of post-login anomalous behaviors associated with special Sauce Demo profiles (`problem_user`, `performance_glitch_user`, `error_user`, and `visual_user`), as the authentication process for these users follows the standard flow.
 
-## 4. Premissas
-* O SauceDemo não possui fluxo de recuperação de senha ("Esqueci minha senha"), portanto este cenário não é aplicável ao escopo de testes.
-* O SauceDemo não implementa bloqueio dinâmico de conta por múltiplas tentativas incorretas; o usuário `locked_out_user` já é fornecido pela aplicação como pré-bloqueado. Por isso, este comportamento não é aplicável.
-* O SauceDemo não possui funcionalidade "Lembrar meu usuário", cadastro de novos usuários ou login por mídia social na tela de autenticação.
+## 4. Assumptions
+* SauceDemo does not feature a password recovery flow ("Forgot Password"), making this scenario inapplicable to the test scope.
+* SauceDemo does not implement dynamic account locking after multiple incorrect attempts; the user `locked_out_user` is provided pre-locked by the application. Therefore, this behavior is not applicable.
+* SauceDemo does not feature "Remember Me", user registration, or social media login options on the authentication screen.
 
-## 5. Itens de teste
-| Item | Descrição |
+## 5. Test Items
+| Item | Description |
 | :--- | :--- |
-| Tela de login | Página inicial do SauceDemo (https://www.saucedemo.com), versão web |
-| Campos de entrada | Usuário e senha |
-| Mensagens de erro | Mensagens exibidas em falhas de autenticação |
-| Redirecionamento | Acesso a /inventory.html após login válido |
+| Login Screen | SauceDemo landing page (https://www.saucedemo.com), web version |
+| Input Fields | Username and Password |
+| Error Messages | Messages displayed upon authentication failures |
+| Redirection | Access to `/inventory.html` following a valid login |
 
-## 6. Equipe
-Como este plano de teste faz parte de um projeto pessoal com o objetivo de demonstrar habilidades em testes de software, a única pessoa envolvida no desenvolvimento é Jessica Vieira.
+## 6. Team
+As this test plan is part of a personal portfolio project designed to demonstrate software testing skills, Jessica Vieira is the sole contributor.
 
-## 7. Riscos e Mitigações
-| Risco Identificado | Impacto | Ação de Mitigação |
+## 7. Risks and Mitigations
+| Identified Risk | Impact | Mitigation Strategy |
 | :--- | :--- | :--- |
-| Indisponibilidade do ambiente público do Sauce Demo durante a execução. | Alto | Confirmar a estabilidade da URL (https://www.saucedemo.com/) antes de iniciar a sessão de testes. |
-| Falha no redirecionamento do usuário válido (standard_user). | Crítico | Priorizar a execução do cenário de sucesso com o Smoke Test. |
+| Inaccessibility of the public Sauce Demo environment during execution. | High | Verify URL stability (https://www.saucedemo.com/) prior to starting the test session. |
+| Redirection failure for valid user (`standard_user`). | Critical | Prioritize running the success scenario first via the Smoke Test. |
 
-## 8. Estratégia de testes
-A abordagem de validação será baseada exclusivamente em **testes manuais de caixa-preta**, focando no cumprimento dos requisitos funcionais da tela de autenticação e no comportamento do sistema perante entradas do usuário.
+## 8. Test Strategy
+The validation approach is based exclusively on **manual black-box testing**, focusing on verifying functional authentication requirements and system behavior when handling user input.
 
-### 8.1 Resumo da Estratégia
+### 8.1 Strategy Summary
 
-| Nível de Teste | Tipo de Teste | Técnicas de Teste | Forma de Execução |
+| Test Level | Test Type | Test Techniques | Execution Mode |
 | :--- | :--- | :--- | :--- |
-| Teste de Sistema, Teste de Interface (UI) | Smoke Test, Funcional, Caixa-Preta | Particionamento de Equivalência, Tabela de Decisão | Manual |
+| System Testing, UI Testing | Smoke Test, Functional, Black-Box | Equivalence Partitioning, Decision Table | Manual |
 
-### 8.2 Abordagem de Execução
+### 8.2 Execution Approach
 
-1. **Smoke Test (Teste de Fumaça):**
-   * Antes de iniciar a suíte completa de testes, será executado manualmente um único cenário crítico: login bem-sucedido com o usuário `standard_user`.
-   * **Objetivo:** Garantir a estabilidade e acessibilidade do ambiente do Sauce Demo. Se este cenário falhar, a execução da suíte completa será suspensa.
+1. **Smoke Test:**
+   * Before executing the full test suite, a single critical scenario will be run manually: a successful login with `standard_user`.
+   * **Goal:** Ensure stability and accessibility of the Sauce Demo environment. If this scenario fails, execution of the complete test suite will be suspended.
 
-2. **Testes Funcionais e Regras de Negócio:**
-   * Execução guiada por Casos de Teste pré-definidos para validar fluxos de acesso, usuários bloqueados, credenciais inválidas e validações de campos obrigatórios.
+2. **Functional Testing & Business Rules:**
+   * Guided by pre-defined Test Cases to validate access flows, locked-out users, invalid credentials, and required field validations.
 
-3. **Técnicas Aplicadas:**
-   * **Particionamento de Equivalência:** Divisão das entradas de dados em classes válidas (sucesso), inválidas (credenciais incorretas) e de estado (usuário bloqueado), evitando testes redundantes.
-   * **Tabela de Decisão:** Mapeamento das combinações de entrada (usuário e senha) e dos resultados esperados.
+3. **Applied Techniques:**
+   * **Equivalence Partitioning:** Dividing input data into valid (success), invalid (incorrect credentials), and state (locked-out user) classes to avoid redundant testing.
+   * **Decision Table:** Mapping combinations of inputs (username and password) to expected outcomes.
 
-| Regra | Usuário | Senha | Resultado esperado |
+| Rule | Username | Password | Expected Outcome |
 | :--- | :--- | :--- | :--- |
-| R1 | Válido | Válida | Redireciona para /inventory.html |
-| R2 | Bloqueado | Válida | Erro: usuário bloqueado (locked out) |
-| R3 | Inexistente | Preenchida | Erro: usuário e senha não correspondem |
-| R4 | Válido | Inválida | Erro: usuário e senha não correspondem |
-| R5 | Vazio | Preenchida | Erro: usuário obrigatório (Username is required) |
-| R6 | Preenchido | Vazia | Erro: senha obrigatória (Password is required) |
-| R7 | Vazio | Vazia | Erro: usuário obrigatório (Username is required) |
+| R1 | Valid | Valid | Redirects to /inventory.html |
+| R2 | Locked out | Valid | Error: user locked out |
+| R3 | Non-existent | Filled | Error: username and password do not match |
+| R4 | Valid | Invalid | Error: username and password do not match |
+| R5 | Empty | Filled | Error: username is required |
+| R6 | Filled | Empty | Error: password is required |
+| R7 | Empty | Empty | Error: username is required |
 
-## 9. Critérios
-### 9.1 Critérios de entrada
-* Casos de teste definidos e revisados
-* Ambiente de teste pronto
+## 9. Criteria
+### 9.1 Entry Criteria
+* Test cases defined and reviewed
+* Test environment ready
 
-### 9.2 Critérios de saída
-* Todos os casos de teste executados
-* Todos os defeitos encontrados documentados
-* Evidências registradas para todos os casos que falharam
+### 9.2 Exit Criteria
+* All test cases executed
+* All identified defects documented
+* Test evidence recorded for all failed test cases
 
-### 9.3 Critérios de suspensão
-* Falha no Smoke Test (login com standard_user)
-* Site do SauceDemo indisponível
+### 9.3 Suspension Criteria
+* Smoke Test failure (login with `standard_user`)
+* Unavailability of the SauceDemo website
 
-### 9.4 Critérios de retomada
-* Smoke Test executado com sucesso
-* Ambiente estável novamente
+### 9.4 Resumption Criteria
+* Successful re-execution of the Smoke Test
+* Test environment stability restored
 
-## 10. Ambiente de testes
-| Componente | Detalhes |
-|------------|----------|
-| **URL da aplicação** | https://www.saucedemo.com |
-| **Navegador** | Mozilla Firefox 156.0 (64 bits) para Arch Linux |
-| **Sistema operacional** | Arch Linux |
-| **Rede** | Wi-Fi residencial |
-| **Dispositivo** | Desktop |
-| **Ferramentas de teste** | GitHub, Markdown |
-
-## 11. Dados de teste
-| Perfil | Usuário | Senha |
-| :--- | :--- | :--- |
-| Válido | standard_user | secret_sauce |
-| Bloqueado | locked_out_user | secret_sauce |
-| Inválido | usuario_invalido | senha_invalida |
-| Vazio | (em branco) | (em branco) |
-
-## 12. Estimativas
-| Atividade | Esforço estimado |
+## 10. Test Environment
+| Component | Details |
 | :--- | :--- |
-| Elaboração dos casos de teste | 2h |
-| Execução do Smoke Test | 10 min |
-| Execução da suíte completa | 1h |
-| Registro de bugs e evidências | 1h |
-| **Total** | **~4h10** |
+| **Application URL** | https://www.saucedemo.com |
+| **Browser** | Mozilla Firefox 156.0 (64-bit) for Arch Linux |
+| **Operating System** | Arch Linux |
+| **Network** | Home Wi-Fi |
+| **Device** | Desktop |
+| **Test Tools** | GitHub, Markdown |
 
-**Cronograma:** 21/09/2026 a 23/09/2026
+## 11. Test Data
+| Profile | Username | Password |
+| :--- | :--- | :--- |
+| Valid | standard_user | secret_sauce |
+| Locked out | locked_out_user | secret_sauce |
+| Invalid | usuario_invalido | senha_invalida |
+| Empty | (blank) | (blank) |
 
-## 13. Entregáveis
-* Plano de teste
-* Casos de teste
-* Relatório de bugs
-* Evidências de teste
+## 12. Estimates
+| Activity | Estimated Effort |
+| :--- | :--- |
+| Test case creation | 2h |
+| Smoke Test execution | 10 min |
+| Full suite execution | 1h |
+| Defect logging and evidence capture | 1h |
+| **Total** | **~4h10m** |
 
-## 14. Referências
+**Timeline:** 09/21/2026 to 09/23/2026
+
+## 13. Deliverables
+* Test Plan
+* Test Cases
+* Bug Report
+* Test Evidence
+
+## 14. References
 * SauceDemo: https://www.saucedemo.com
-* ISO/IEC/IEEE 29119-3: Software and systems engineering, Software testing, Test documentation
+* ISO/IEC/IEEE 29119-3: Software and systems engineering — Software testing — Test documentation
 
-## 15. Glossário
-| Termo | Definição |
+## 15. Glossary
+| Term | Definition |
 | :--- | :--- |
-| Smoke Test | Teste rápido para verificar se as funcionalidades críticas estão operacionais antes da suíte completa |
-| Caixa-preta | Técnica que valida o comportamento sem considerar o código interno |
-| Particionamento de Equivalência | Técnica que agrupa entradas em classes que se comportam da mesma forma |
-| Tabela de Decisão | Técnica que mapeia combinações de entradas e suas saídas esperadas |
+| Smoke Test | A rapid test suite to verify that critical features are functional before running the full suite |
+| Black-box | A testing technique that validates software behavior without inspecting its internal code |
+| Equivalence Partitioning | A technique that groups inputs into classes expected to exhibit similar behavior |
+| Decision Table | A structured technique used to map input combinations against expected output behaviors |
