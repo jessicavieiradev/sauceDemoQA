@@ -1,66 +1,66 @@
-# Testes de Software & QA - SauceDemo
+# Software Testing & QA - SauceDemo
 
-> **Projeto de Portfólio de Qualidade de Software (QA)**  
-> Este repositório contém a documentação completa do ciclo de testes manuais para a funcionalidade de **Login** da aplicação [SauceDemo](https://www.saucedemo.com).
+> **Software Quality Assurance (QA) Portfolio Project**  
+> This repository contains the complete documentation for the manual testing cycle of the **Login** functionality on the [SauceDemo](https://www.saucedemo.com) application.
 
 ---
 
-## Autor
+## Author
 
-* **Nome:** Jessica Vieira
-* **Cargo:** QA Analyst / Test Analyst
+* **Name:** Jessica Vieira
+* **Role:** QA Analyst / Test Analyst
 * **GitHub:** [@jessicavieiradev](https://github.com/jessicavieiradev)
 
 ---
 
-## Visão Geral do Projeto
+## Project Overview
 
-O objetivo deste projeto é demonstrar a aplicação prática de conceitos fundamentais de **Garantia de Qualidade (QA)** e **Engenharia de Testes**, cobrindo desde o planeamento estratégico até a execução, rastreabilidade e reporte formal de defeitos.
+The objective of this project is to demonstrate the practical application of fundamental **Quality Assurance (QA)** and **Software Testing** concepts, covering everything from strategic planning to execution, traceability, and formal defect reporting.
 
-A aplicação testada foi o **SauceDemo**, um e-commerce fictício amplamente utilizado na comunidade de QA para simulação de cenários reais de testes funcionais e de interface (UI).
+The application tested was **SauceDemo**, a dummy e-commerce site widely used in the QA community to simulate real-world functional and user interface (UI) testing scenarios.
 
 ---
 
-## Entregáveis do Projeto
+## Project Deliverables
 
-O projeto está estruturado em **3 documentos principais**, cobrindo todo o ciclo de vida de testes:
+The project is structured into **3 main documents**, covering the entire testing lifecycle:
 
-| Documento | Descrição | Link de Acesso |
+| Document | Description | Access Link |
 | :--- | :--- | :--- |
-| **1. Plano de Testes** | Planeamento estratégico, escopo, ambiente, critérios de entrada/saída, riscos e Tabela de Decisão. | [Acessar o Plano](https://github.com/jessicavieiradev/sauceDemoQA/blob/main/testPlan.md) |
-| **2. Casos de Teste & Execução** | Suíte de testes com rastreabilidade, passos a passo, resultados esperados vs. obtidos e matriz de cobertura. | [Acessar a Execução](https://github.com/jessicavieiradev/sauceDemoQA/blob/main/testCases.md) |
-| **3. Relatório de Bug (Bug Report)** | Documentação técnica detalhada do defeito visual (UI/Overflow) encontrado durante a execução. | [Acessar o Bug Report](https://github.com/jessicavieiradev/sauceDemoQA/blob/main/bugReport.md) |
+| **1. Test Plan** | Strategic planning, scope, environment, entry/exit criteria, risks, and Decision Table. | [View Test Plan](https://github.com/jessicavieiradev/sauceDemoQA/blob/main/testPlan.md) |
+| **2. Test Cases & Execution** | Test suite featuring traceability, step-by-step instructions, expected vs. actual results, and coverage matrix. | [View Execution](https://github.com/jessicavieiradev/sauceDemoQA/blob/main/testCases.md) |
+| **3. Bug Report** | Detailed technical documentation of the visual defect (UI/Overflow) identified during execution. | [View Bug Report](https://github.com/jessicavieiradev/sauceDemoQA/blob/main/bugReport.md) |
 
 ---
 
-## Metodologias e Técnicas Aplicadas
+## Methodologies & Applied Techniques
 
-* **Técnicas de Design de Testes (Caixa-Preta):**
-  * **Tabela de Decisão:** Mapeamento de 7 regras de negócio para garantir a cobertura total de combinações de entradas (usuário/senha válidos, bloqueados, inválidos e vazios).
-  * **Particionamento de Equivalência:** Divisão das entradas em classes válidas, inválidas e de estado para evitar testes redundantes.
-* **Tipos e Níveis de Teste:**
-  * **Smoke Test (Critério de Suspensão):** Validação crítica do fluxo principal (`standard_user`) antes da execução da suíte completa.
-  * **Teste Funcional:** Validação de regras de negócio, mensagens de erro obrigatórias e bloqueio de acesso.
-  * **Teste de Interface (UI/UX):** Validação de máscaras de senha e exibição visual dos elementos na tela.
-* **Documentação & Rastreabilidade:**
-  * Matriz de Rastreabilidade cobrindo Itens do Escopo e Regras da Tabela de Decisão.
-  * Reporte padronizado de Bugs (`BUG-01`) com severidade, prioridade, passos para reproduzir e evidências combinadas.
-  
----
-
-## Defeito Encontrado (Highlight)
-
-Durante a execução da suíte de testes, foi identificado um bug de layout/UI comum a múltiplos cenários de credenciais inválidas:
-
-* **ID do Bug:** `BUG-01`
-* **Tipo:** UI / Layout (Text Overflow & Padding desalinhado)
-* **Severidade:** Baixa | **Prioridade:** Média
-* **Resumo:** A mensagem de erro `"Epic sadface: Username and password do not match any user in this service"` é disparada pela regra de negócio, mas é exibida com o texto cortado nas margens superior/inferior e com desalinhamento no container vermelho.
+* **Test Design Techniques (Black-Box):**
+  * **Decision Table:** Mapping of 7 business rules to ensure complete coverage of input combinations (valid, locked-out, invalid, and empty credentials).
+  * **Equivalence Partitioning:** Dividing inputs into valid, invalid, and state classes to prevent redundant testing.
+* **Test Types & Levels:**
+  * **Smoke Test (Suspension Criteria):** Critical validation of the happy path (`standard_user`) prior to running the full test suite.
+  * **Functional Testing:** Validation of business rules, mandatory error messages, and access restriction.
+  * **UI/UX Testing:** Validation of password masking and visual display of elements on screen.
+* **Documentation & Traceability:**
+  * Traceability Matrix covering Scope Items and Decision Table Rules.
+  * Standardized Bug Reporting (`BUG-01`) featuring severity, priority, steps to reproduce, and supporting evidence.
 
 ---
 
-## Ferramentas Utilizadas
+## Defect Found (Highlight)
 
-* Markdown (Documentação)
-* Git & GitHub (Controle de versão e hospedagem do portfólio)
+During test suite execution, a layout/UI bug common to multiple invalid credential scenarios was identified:
+
+* **Bug ID:** `BUG-01`
+* **Type:** UI / Layout (Text Overflow & Misaligned Padding)
+* **Severity:** Low | **Priority:** Medium
+* **Summary:** The error message `"Epic sadface: Username and password do not match any user in this service"` is triggered correctly by the business rule, but displays with text clipping on the top/bottom margins and misalignment inside the red container.
+
+---
+
+## Tools Used
+
+* Markdown (Documentation)
+* Git & GitHub (Version control and portfolio hosting)
 * Firefox for Arch Linux
