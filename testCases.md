@@ -1,46 +1,47 @@
-# Casos de Teste - Funcionalidade de Login
-**Projeto:** SauceDemo Teste de Login \
-**Responsável:** Jessica Vieira \
-**Data:** 22/09/2026 \
-**Documento de referência:** Plano de Teste - Funcionalidade de Login (v1.2)
+# Test Cases - Login Feature
+**Project:** SauceDemo Login Testing \
+**Author:** Jessica Vieira \
+**Date:** September 22, 2026 \
+**Reference Document:** Test Plan - Login Feature (v1.2)
 
-## Convenções
+## Conventions
 
-* **ID:** LT (Login Test) + número sequencial + regra da Tabela de Decisão do plano (quando aplicável). Ex.: `LT01-R1`.
-* **Prioridade:** Baixa, Média, Alta ou Crítica.
-* **Status:** Não executado, Passou ou Falhou.
+* **ID:** LT (Login Test) + sequential number + Decision Table rule from the plan (when applicable). E.g., `LT01-R1`.
+* **Priority:** Low, Medium, High, or Critical.
+* **Status:** Not Run, Passed, or Failed.
 
-**Pré-condições gerais (valem para todos os casos):** navegador aberto em https://www.saucedemo.com, tela de login carregada com os campos vazios, ambiente conforme a seção 10 do plano de teste. Dados de teste: seção 11 do plano de teste.
+**General Preconditions (apply to all cases):** Browser open at https://www.saucedemo.com, login screen loaded with empty fields, environment as described in section 10 of the test plan. Test data: section 11 of the test plan.
 
-## Casos de Teste
+## Test Cases
 
-| ID | Sumário | Prioridade | Steps | Resultado esperado | Resultado obtido | Status | Bug / Issue |
+| ID | Summary | Priority | Steps | Expected Result | Actual Result | Status | Bug / Issue |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **LT01-R1** | Login com credenciais válidas (Smoke Test) | Crítica | 1. Digitar `standard_user` no campo Username.<br>2. Digitar `secret_sauce` no campo Password.<br>3. Clicar em Login. | Redireciona para `/inventory.html` e exibe a página de produtos ("Products"), sem mensagem de erro. | Redireciona para `/inventory.html` e exibe a página de produtos ("Products"), sem mensagem de erro. | Passou | |
-| **LT02-R2** | Login com usuário bloqueado | Alta | 1. Digitar `locked_out_user` no campo Username.<br>2. Digitar `secret_sauce` no campo Password.<br>3. Clicar em Login. | Acesso negado, permanece na tela de login, exibe `"Epic sadface: Sorry, this user has been locked out."` | Acesso negado, permanece na tela de login, exibe `"Epic sadface: Sorry, this user has been locked out."` | Passou | |
-| **LT03-R3** | Login com usuário inexistente e senha preenchida | Alta | 1. Digitar `usuario_invalido` no campo Username.<br>2. Digitar `senha_invalida` no campo Password.<br>3. Clicar em Login. | Acesso negado, permanece na tela de login, exibe `"Epic sadface: Username and password do not match any user in this service."` | O login foi bloqueado corretamente e a mensagem foi exibida, porém a mensagem de erro exibe falha de UI: o texto está cortado no topo e na base (overflow de texto) e a caixa vermelha apresenta padding desalinhado. | Falhou | BUG-01 |
-| **LT04-R4** | Login com usuário válido e senha incorreta | Alta | 1. Digitar `standard_user` no campo Username.<br>2. Digitar `senha_invalida` no campo Password.<br>3. Clicar em Login. | Acesso negado, permanece na tela de login, exibe `"Epic sadface: Username and password do not match any user in this service."` | O login foi bloqueado corretamente e a mensagem foi exibida, porém a mensagem de erro exibe falha de UI: o texto está cortado no topo e na base (overflow de texto) e a caixa vermelha apresenta padding desalinhado. | Falhou | BUG-01 |
-| **LT05-R5** | Login com usuário vazio e senha preenchida | Alta | 1. Manter o campo Username vazio.<br>2. Digitar `secret_sauce` no campo Password.<br>3. Clicar em Login. | Acesso negado, exibe `"Epic sadface: Username is required."` | Acesso negado, exibe `"Epic sadface: Username is required."` | Passou | |
-| **LT06-R6** | Login com usuário preenchido e senha vazia | Alta | 1. Digitar `standard_user` no campo Username.<br>2. Manter o campo Password vazio.<br>3. Clicar em Login. | Acesso negado, exibe `"Epic sadface: Password is required."` | Acesso negado, exibe `"Epic sadface: Password is required."` | Passou | |
-| **LT07-R7** | Login com usuário e senha vazios | Alta | 1. Manter os campos Username e Password vazios.<br>2. Clicar em Login. | Acesso negado, exibe `"Epic sadface: Username is required"`. | Acesso negado, exibe `"Epic sadface: Username is required"`. | Passou | |
-| **LT08** | Máscara do campo de senha | Média | 1. Clicar no campo Password.<br>2. Digitar `secret_sauce`.<br>3. Observar como os caracteres são exibidos. | Caracteres exibidos mascarados (pontos ou asteriscos); a senha não fica legível na tela. | Caracteres exibidos mascarados (pontos ou asteriscos); a senha não fica legível na tela. | Passou | |
-| **LT09-R3** | Login com usuário em letras maiúsculas | Média | 1. Digitar `STANDARD_USER` no campo Username.<br>2. Digitar `secret_sauce` no campo Password.<br>3. Clicar em Login. | Acesso negado, exibe `"Epic sadface: Username and password do not match any user in this service."` | O login foi bloqueado corretamente e a mensagem foi exibida, porém a mensagem de erro exibe falha de UI: o texto está cortado no topo e na base (overflow de texto) e a caixa vermelha apresenta padding desalinhado. | Falhou | BUG-01 |
-| **LT10** | Fechar a mensagem de erro | Baixa | 1. Clicar em Login com os campos vazios para gerar a mensagem de erro.<br>2. Clicar no ícone X ao lado da mensagem de erro. | A mensagem de erro deixa de ser exibida; usuário permanece na tela de login. | A mensagem de erro deixa de ser exibida; usuário permanece na tela de login. | Passou | |
-## Rastreabilidade
+| **LT01-R1** | Login with valid credentials (Smoke Test) | Critical | 1. Enter `standard_user` in the Username field.<br>2. Enter `secret_sauce` in the Password field.<br>3. Click Login. | Redirects to `/inventory.html` and displays the Products page ("Products"), with no error message. | Redirects to `/inventory.html` and displays the Products page ("Products"), with no error message. | Passed | |
+| **LT02-R2** | Login with locked-out user | High | 1. Enter `locked_out_user` in the Username field.<br>2. Enter `secret_sauce` in the Password field.<br>3. Click Login. | Access denied, remains on login screen, displays `"Epic sadface: Sorry, this user has been locked out."` | Access denied, remains on login screen, displays `"Epic sadface: Sorry, this user has been locked out."` | Passed | |
+| **LT03-R3** | Login with non-existent user and filled password | High | 1. Enter `usuario_invalido` in the Username field.<br>2. Enter `senha_invalida` in the Password field.<br>3. Click Login. | Access denied, remains on login screen, displays `"Epic sadface: Username and password do not match any user in this service."` | Login was correctly blocked and the error message appeared, but the error box has a UI defect: text is clipped at the top and bottom (text overflow) and the red container has misaligned padding. | Failed | BUG-01 |
+| **LT04-R4** | Login with valid user and incorrect password | High | 1. Enter `standard_user` in the Username field.<br>2. Enter `senha_invalida` in the Password field.<br>3. Click Login. | Access denied, remains on login screen, displays `"Epic sadface: Username and password do not match any user in this service."` | Login was correctly blocked and the error message appeared, but the error box has a UI defect: text is clipped at the top and bottom (text overflow) and the red container has misaligned padding. | Failed | BUG-01 |
+| **LT05-R5** | Login with empty user and filled password | High | 1. Leave the Username field empty.<br>2. Enter `secret_sauce` in the Password field.<br>3. Click Login. | Access denied, displays `"Epic sadface: Username is required."` | Access denied, displays `"Epic sadface: Username is required."` | Passed | |
+| **LT06-R6** | Login with filled user and empty password | High | 1. Enter `standard_user` in the Username field.<br>2. Leave the Password field empty.<br>3. Click Login. | Access denied, displays `"Epic sadface: Password is required."` | Access denied, displays `"Epic sadface: Password is required."` | Passed | |
+| **LT07-R7** | Login with empty user and empty password | High | 1. Leave Username and Password fields empty.<br>2. Click Login. | Access denied, displays `"Epic sadface: Username is required"`. | Access denied, displays `"Epic sadface: Username is required"`. | Passed | |
+| **LT08** | Password field masking | Medium | 1. Click the Password field.<br>2. Enter `secret_sauce`.<br>3. Observe how characters are displayed. | Characters are masked (dots or asterisks); the password is not visible on screen. | Characters are masked (dots or asterisks); the password is not visible on screen. | Passed | |
+| **LT09-R3** | Login with uppercase username | Medium | 1. Enter `STANDARD_USER` in the Username field.<br>2. Enter `secret_sauce` in the Password field.<br>3. Click Login. | Access denied, displays `"Epic sadface: Username and password do not match any user in this service."` | Login was correctly blocked and the error message appeared, but the error box has a UI defect: text is clipped at the top and bottom (text overflow) and the red container has misaligned padding. | Failed | BUG-01 |
+| **LT10** | Dismiss error message | Low | 1. Click Login with empty fields to trigger the error message.<br>2. Click the X icon next to the error message. | Error message is dismissed; user remains on the login screen. | Error message is dismissed; user remains on the login screen. | Passed | |
 
-### Itens do escopo x casos de teste
-| Item do escopo (seção 3.1 do plano) | Casos de teste |
+## Traceability
+
+### Scope Items x Test Cases
+| Scope Item (section 3.1 of the test plan) | Test Cases |
 | :--- | :--- |
-| Login com credenciais válidas | LT01-R1 |
-| Login com usuário bloqueado | LT02-R2 |
-| Login com usuário e/ou senha inválidos | LT03-R3, LT04-R4, LT09-R3 |
-| Login com campos vazios | LT05-R5, LT06-R6, LT07-R7 |
-| Validação das mensagens de erro | LT02-R2 a LT07-R7, LT09-R3, LT10 |
-| Redirecionamento para /inventory.html | LT01-R1 |
-| Máscara de senha | LT08 |
+| Login with valid credentials | LT01-R1 |
+| Login with locked-out user | LT02-R2 |
+| Login with invalid username and/or password | LT03-R3, LT04-R4, LT09-R3 |
+| Login with empty fields | LT05-R5, LT06-R6, LT07-R7 |
+| Validation of error messages | LT02-R2 to LT07-R7, LT09-R3, LT10 |
+| Redirection to /inventory.html | LT01-R1 |
+| Password masking | LT08 |
 
-### Regras da Tabela de Decisão x casos de teste
-| Regra | Caso de teste |
+### Decision Table Rules x Test Cases
+| Rule | Test Case |
 | :--- | :--- |
 | R1 | LT01-R1 |
 | R2 | LT02-R2 |
@@ -50,7 +51,7 @@
 | R6 | LT06-R6 |
 | R7 | LT07-R7 |
 
-## Observações
+## Notes
 
-* As mensagens de erro seguem o comportamento observado do SauceDemo; confirmar o texto exato na execução, já que o sistema não possui especificação formal.
-* Ordem sugerida de execução: LT01-R1 (Smoke Test) primeiro. Se falhar, a execução da suíte é suspensa (critério 9.3 do plano de teste).
+* Error messages follow the observed behavior of SauceDemo; verify exact strings during execution as the system lacks formal specifications.
+* Suggested execution order: LT01-R1 (Smoke Test) first. If it fails, execution of the full suite is suspended (criterion 9.3 of the test plan).
